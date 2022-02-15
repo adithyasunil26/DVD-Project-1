@@ -144,12 +144,12 @@
 
 *Parameter definition
 .PARAM Lmin=45n
-.PARAM Wmin=1u
+.PARAM Wmin=8u
 .PARAM Ldiff=90n
 	
 *Description of the MOS
 
-Mn drain gate source body nmos W={Wmin} L={Lmin} 
+Mn drain gate source body pmos W={Wmin} L={Lmin} 
 
 Vd 	drain       	0		    0
 Vg 	gate	        0   		0   
@@ -160,10 +160,13 @@ Vb 	body	        0	    	0
 *Definition of type of analysis
 .CONTROL
 set filetype=ascii
+set wr_singlescale
+set wr_vecnames
+set appendwrite
 
 dc Vd 0 1.2 0.05
 print V(drain) V(gate) V(source) V(body) I(Vd) I(Vg) I(Vs) I(Vb)
-write pmos_off/pmos_offW1.txt  V(drain) V(gate) V(source) V(body) I(Vd) I(Vg) I(Vs) I(Vb)
+wrdata pmos_off/pmos_offW8.txt V(drain) V(gate) V(source) V(body) I(Vd) I(Vg) I(Vs) I(Vb)
 
 .ENDC
 .END

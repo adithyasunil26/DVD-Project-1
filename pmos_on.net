@@ -144,7 +144,7 @@
 
 *Parameter definition
 .PARAM Lmin=45n
-.PARAM Wmin=1u
+.PARAM Wmin=8u
 .PARAM Ldiff=90n
 	
 *Description of the MOS
@@ -160,10 +160,13 @@ Vb 	body	        0	    	0
 *Definition of type of analysis
 .CONTROL
 set filetype=ascii
+set wr_singlescale
+set wr_vecnames
+set appendwrite
 
 dc Vg 0 1.2 0.05
 print V(drain) V(gate) V(source) V(body) I(Vd) I(Vg) I(Vs) I(Vb)
-write pmos_on/pmos_onW1.txt  V(drain) V(gate) V(source) V(body) I(Vd) I(Vg) I(Vs) I(Vb)
+wrdata pmos_on/pmos_onW8.txt V(drain) V(gate) V(source) V(body) I(Vd) I(Vg) I(Vs) I(Vb)
 
 .ENDC
 .END
